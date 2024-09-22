@@ -36,6 +36,11 @@ const UserSchema = new mongoose.Schema(
           }
         );
       },
+
+      async comparepassword (candidatePassword){
+          const isMatch = await bcrypt.compare(candidatePassword, this.password)
+          return isMatch;
+        }
     },
   }
 );
